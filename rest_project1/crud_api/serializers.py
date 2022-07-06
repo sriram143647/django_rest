@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app1_api.models import student_data
+from crud_api.models import student_data
 
 class student_serializer(serializers.Serializer):
     uid = serializers.IntegerField()

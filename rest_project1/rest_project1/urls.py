@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app1_api import views
+from app1_api import views as app1_views
+from crud_api import views as crud_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('std_infos/',views.student_details),
-    path('std_info/<int:pk>',views.student_detail)
+    path('std_infos/',app1_views.student_details),
+    path('std_info/<int:pk>',app1_views.student_detail),
+    path('rec_create/',app1_views.record_create),
+    path('get_data/',app1_views.record_fetch),
+    path('crud_api/',crud_views.record_operations),
+    # path('crud_api/',crud_views.records_opr.as_view()),
 ]
