@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from app1_api import views as app1_views
 from crud_api import views as crud_views
+from app2_api import views as app2_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,9 @@ urlpatterns = [
     path('get_data/',app1_views.record_fetch),
     path('crud_api/',crud_views.record_operations),
     # path('crud_api/',crud_views.records_opr.as_view()),
+    # path('api2/',app2_views.rec_operations),
+    # path('api2/<int:id>/',app2_views.rec_operations),
+    path('api2/',app2_views.rec_operations.as_view()),
+    path('api2/<int:id>/',app2_views.rec_operations.as_view()),
+    
 ]
