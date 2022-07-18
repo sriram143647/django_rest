@@ -22,9 +22,9 @@ def get_data(id=None):
 def record_insert():
     url = 'http://127.0.0.1:8000/rec_create/'
     data= {
-        'uid': 104,
+        'uid': 17,
         'name':'rahul',
-        'mail':'rahul@yahoo.com',
+        'mail':'rahul@gmail.com',
         'phone':'9228327007',
         'add1':'25 maruti nagar linbayat',
         'add2':'udhna',
@@ -52,4 +52,4 @@ def record_update():
     data = r.json()
     print(data)
     
-record_update()
+record_insert()
