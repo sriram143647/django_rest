@@ -1,4 +1,4 @@
-"""rest_project1 URL Configuration
+"""crud_app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -13,23 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import imp
 from django.contrib import admin
 from django.urls import path
-from app1_api import views as app1_views
-from crud_api import views as crud_views
-from app2_api import views as app2_views
+from api1 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('std_infos/',app1_views.student_details),
-    path('std_info/<int:pk>',app1_views.student_detail),
-    path('rec_create/',app1_views.record_create),
-    path('get_data/',app1_views.record_fetch),
-    path('crud_api/',crud_views.record_operations),
-    # path('crud_api/',crud_views.records_opr.as_view()),
-    # path('api2/',app2_views.rec_operations),
-    # path('api2/<int:id>/',app2_views.rec_operations),
-    path('api2/',app2_views.rec_operations.as_view()),
-    path('api2/<int:id>/',app2_views.rec_operations.as_view()),    
+    path('api1/',views.rec_operations),
+    path('api1/<int:id>/',views.rec_operations),
 ]
