@@ -5,11 +5,11 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # # function based APIview
-@api_view(['GET','POST','PUT','PATCH','DELETE'])
+@api_view(['GET','POST','PUT','DELETE'])
 def rec_operations(request,id=None):
     if request.method == 'GET':
         if id is not None:
-            std_data = employee.objects.get(uid=id)
+            std_data = employee.objects.get(id=id)
             std_serializer = emp_serializer(std_data)
             return Response(std_serializer.data)
         else:
@@ -26,18 +26,8 @@ def rec_operations(request,id=None):
         else:
             return Response(std_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
-    if request.method == 'PATCH':
-        std_data = employee.objects.get(uid=id)
-        std_serializer = emp_serializer(std_data,data=request.data,partial=True)
-        if std_serializer.is_valid():
-            std_serializer.save()
-            res = {'msg':'Partial Record Updated'}
-            return Response(res,status=status.HTTP_201_CREATED)
-        else:
-            return Response(std_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-    
     if request.method =='PUT':
-        std_data = employee.objects.get(uid=id)
+        std_data = employee.objects.get(id=id)
         std_serializer = emp_serializer(std_data,data=request.data)
         if std_serializer.is_valid():
             std_serializer.save()
@@ -47,7 +37,7 @@ def rec_operations(request,id=None):
             return Response(std_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
     if request.method == 'DELETE':
-        std_data = employee.objects.get(uid=id)
+        std_data = employee.objects.get(id=id)
         std_data.delete()
         res = {'msg':'Record Deleted'}
         return Response(res,status=status.HTTP_201_CREATED)
