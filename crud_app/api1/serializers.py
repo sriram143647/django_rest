@@ -4,4 +4,4 @@ from api1.models import employee
 class emp_serializer(serializers.ModelSerializer):
     class Meta:
         model = employee
-        fields = '__all__'
+        fields = ['id','name','mail','phone','gender','add']
