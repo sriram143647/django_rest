@@ -27,6 +27,7 @@ urlpatterns = [
     path('rec_create/',app1_views.record_create),
     path('get_data/',app1_views.record_fetch),
     path('crud_api/',crud_views.record_operations),
-    path('api2/',app2_views.rec_operations.as_view()),
-    path('api2/<int:id>/',app2_views.rec_operations.as_view()),    
+    # path('crud_api/',crud_views.records_opr.as_view()),
+    path('api2/',app2_views.rec_operations),
+    path('api2/<int:id>/',app2_views.rec_operations),
 ]

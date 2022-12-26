@@ -5,10 +5,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import render
-   
-# class based APIview
-class rec_operations(APIView):
-    def get(self,request,id=None,format=None):
+
+# function based APIview
+@api_view(['GET','POST','PUT','PATCH','DELETE'])
+def rec_operations(request,id=None):
+    if request.method == 'GET':
         if id is not None:
             std_data = student_data.objects.get(uid=id)
             std_serializer = student_serializer(std_data)
@@ -18,7 +19,7 @@ class rec_operations(APIView):
             std_serializer = student_serializer(std_data,many=True)
             return Response(std_serializer.data)
     
-    def post(self,request,format=None):
+    if request.method == 'POST':
         std_serializer = student_serializer(data = request.data)
         if std_serializer.is_valid():
             std_serializer.save()
@@ -27,7 +28,7 @@ class rec_operations(APIView):
         else:
             return Response(std_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
-    def patch(self,request,id=None,format=None):
+    if request.method == 'PATCH':
         std_data = student_data.objects.get(uid=id)
         std_serializer = student_serializer(std_data,data=request.data,partial=True)
         if std_serializer.is_valid():
@@ -37,7 +38,7 @@ class rec_operations(APIView):
         else:
             return Response(std_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
-    def put(self,request,id=None,format=None):
+    if request.method =='PUT':
         std_data = student_data.objects.get(uid=id)
         std_serializer = student_serializer(std_data,data=request.data)
         if std_serializer.is_valid():
@@ -47,7 +48,7 @@ class rec_operations(APIView):
         else:
             return Response(std_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
-    def delete(self,request,id=None,format=None):
+    if request.method == 'DELETE':
         std_data = student_data.objects.get(uid=id)
         std_data.delete()
         res = {'msg':'Record Deleted'}
