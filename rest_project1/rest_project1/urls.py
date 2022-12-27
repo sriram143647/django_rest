@@ -34,9 +34,11 @@ urlpatterns = [
     path('api2/',app2_views.rec_operations),
     path('api2/<int:id>/',app2_views.rec_operations),
     # api3 urls
-    path('api3/',app3_Views.student_list.as_view()),
+    # path('api3/',app3_Views.student_list.as_view()),
     # path('api3/',app3_Views.student_create.as_view()),
     # path('api3/<int:pk>/',app3_Views.student_retrieve.as_view()),
     # path('api3/<int:pk>/',app3_Views.student_update.as_view()),
-    path('api3/<int:pk>/',app3_Views.student_delete.as_view()),
+    # path('api3/<int:pk>/',app3_Views.student_delete.as_view()),
+    path('api3/',app3_Views.student_list_create.as_view()),
+    path('api3/<int:pk>/',app3_Views.student_retrieve_update_delete.as_view()),
 ]
