@@ -1,4 +1,3 @@
-from pydantic import validator
 from rest_framework import serializers
 from app1_api.models import student_data
 
