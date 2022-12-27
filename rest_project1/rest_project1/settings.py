@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'crud_api',
     'app2_api',
     'app3_api',
+    'app4_api',
+    'app5_api',
 ]
 
 MIDDLEWARE = [
