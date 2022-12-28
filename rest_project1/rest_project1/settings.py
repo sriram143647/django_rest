@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'app3_api',
     'app4_api',
     'app5_api',
+    'app6_api',
 ]
 
 MIDDLEWARE = [
