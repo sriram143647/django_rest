@@ -29,7 +29,7 @@ my_router = DefaultRouter()
 
 #register viewset wit router
 # my_router.register('api5',app5_views.student_viewset,basename='std')
-my_router.register('api6',app6_views.student_model_viewset,basename='std')
+my_router.register('api6',app6_views.student_read_only_model_viewset,basename='std')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

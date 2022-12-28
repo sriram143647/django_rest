@@ -8,6 +8,6 @@ from rest_framework import status
 from rest_framework import viewsets
 
 # Create your views here.
-class student_model_viewset(viewsets.ModelViewSet):
+class student_read_only_model_viewset(viewsets.ReadOnlyModelViewSet):
     queryset = student_data.objects.all()
     serializer_class = student_serializer
