@@ -1,13 +1,17 @@
 from app2_api.models import student_data
 from app2_api.serializers import student_serializer
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,authentication_classes,permission_classes
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import render
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # function based APIview
 @api_view(['GET','POST','PUT','PATCH','DELETE'])
+@authentication_classes([BasicAuthentication])
+@permission_classes([IsAuthenticated])
 def rec_operations(request,id=None):
     if request.method == 'GET':
         if id is not None:
