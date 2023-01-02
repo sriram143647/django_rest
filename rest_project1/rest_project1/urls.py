@@ -33,6 +33,7 @@ my_router.register('api6',app6_views.student_read_only_model_viewset,basename='s
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #api1 urls
     path('std_infos/',app1_views.student_details),
     path('std_info/<int:pk>',app1_views.student_detail),
     path('rec_create/',app1_views.record_create),
