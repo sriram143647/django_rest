@@ -1,4 +1,5 @@
 from django.db import models
+from app4_api.signals import generate_token
 
 # Create your models here.
 class student_data(models.Model):
