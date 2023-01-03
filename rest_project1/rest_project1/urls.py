@@ -74,6 +74,7 @@ urlpatterns = [
         
     #api5 urls
     path('',include(my_router.urls)),
+    # path('auth/',include('rest_framework.urls',namespace='auth'))
     
     #api6 urls
     # path('',include(my_router.urls)),

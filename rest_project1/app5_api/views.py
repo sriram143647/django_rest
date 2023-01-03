@@ -1,12 +1,18 @@
+import imp
 from django.shortcuts import render
 from rest_framework.response import Response
 from app5_api.models import student_data
 from app5_api.serializers import student_serializer
 from rest_framework import status
 from rest_framework import viewsets
+from app5_api.custom_auth import custom_authentication
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class student_viewset(viewsets.ViewSet):
+    authentication_classes = [custom_authentication]
+    permission_classes = [IsAuthenticated]
+
     def list(self,request):
         std_data = student_data.objects.all()
         serializer_data = student_serializer(std_data,many=True)
