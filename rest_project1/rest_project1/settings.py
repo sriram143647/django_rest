@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+import django
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,16 +31,23 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
-INSTALLED_APPS = [
+in_built_apps = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
+
+add_libraries = [
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework.authtoken', 
+    'django_filters',
+    'crispy_forms',
+]
+
+custom_apps = [
     'app1_api',
     'crud_api',
     'app2_api',
@@ -48,6 +57,8 @@ INSTALLED_APPS = [
     'app6_api',
     'jwt_api',
 ]
+
+INSTALLED_APPS = in_built_apps+add_libraries+custom_apps
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -151,3 +162,8 @@ REST_FRAMEWORK = {
     # 'DEFAULT_THROTTLE_CLASSES':['rest_framework.throttling.AnonRateThrottle','rest_framework.throttling.UserRateThrottle'],
     'DEFAULT_THROTTLE_RATES':{'anon':'100/day','user':'1000/day','custom_throttle':'60/minute','scoped_throttle':'50/our'}
 }
+
+# global level filters 
+# REST_FRAMEWORK = {
+#     'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
+# }

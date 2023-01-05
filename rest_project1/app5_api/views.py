@@ -7,7 +7,7 @@ from rest_framework import viewsets
 from app5_api.custom_auth import custom_authentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from app5_api.throttle_rates import custom_throttle_rate
-
+from rest_framework.filters import SearchFilter
 
 # Create your views here.
 class student_viewset(viewsets.ViewSet):
@@ -15,6 +15,8 @@ class student_viewset(viewsets.ViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
     # throttle_classes = [AnonRateThrottle,UserRateThrottle]
     throttle_classes = [custom_throttle_rate]
+    filter_backends = [SearchFilter]
+    filter_fields = ['name','city']
 
     def list(self,request):
         std_data = student_data.objects.all()

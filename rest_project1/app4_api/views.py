@@ -5,7 +5,6 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.throttling import ScopedRateThrottle
 
-
 # generate token in termianl
 # python manae.py drf_create_token username
 
@@ -17,7 +16,7 @@ class student_list_create(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     throttle_classes = [ScopedRateThrottle]
     throttle_scope = 'scoped_throttle'
-        
+
 class student_retrieve_update_delete(RetrieveUpdateDestroyAPIView):
     queryset = student_data.objects.all()
     serializer_class = student_serializer
