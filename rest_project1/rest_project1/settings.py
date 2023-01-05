@@ -139,9 +139,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated']
 # }
 
-from datetime import timedelta
+# from datetime import timedelta
 
-SIMPLE_JWT = {
-   'ACCESS_TOKEN_LIFETIME':timedelta(minutes=10),
-   'ROTATE_REFRESH_TOKENS':False
+# SIMPLE_JWT = {
+#    'ACCESS_TOKEN_LIFETIME':timedelta(minutes=10),
+#    'ROTATE_REFRESH_TOKENS':False
+# }
+
+# global Throtle rates
+REST_FRAMEWORK = {
+    # 'DEFAULT_THROTTLE_CLASSES':['rest_framework.throttling.AnonRateThrottle','rest_framework.throttling.UserRateThrottle'],
+    'DEFAULT_THROTTLE_RATES':{'anon':'100/day','user':'1000/day','custom_throttle':'60/minute','scoped_throttle':'50/our'}
 }

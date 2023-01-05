@@ -1,4 +1,3 @@
-import imp
 from django.shortcuts import render
 from rest_framework.response import Response
 from app5_api.models import student_data
@@ -6,12 +5,16 @@ from app5_api.serializers import student_serializer
 from rest_framework import status
 from rest_framework import viewsets
 from app5_api.custom_auth import custom_authentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from app5_api.throttle_rates import custom_throttle_rate
+
 
 # Create your views here.
 class student_viewset(viewsets.ViewSet):
     authentication_classes = [custom_authentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    # throttle_classes = [AnonRateThrottle,UserRateThrottle]
+    throttle_classes = [custom_throttle_rate]
 
     def list(self,request):
         std_data = student_data.objects.all()
