@@ -1,16 +1,16 @@
 from django.shortcuts import render
-from app3_api.models import student_data
-from app3_api.serializers import student_serializer
+from jwt_api.models import student_data
+from jwt_api.serializers import student_serializer
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import ListModelMixin,CreateModelMixin,RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
-from rest_framework.authentication import BasicAuthentication
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class student_list_create(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset = student_data.objects.all()
     serializer_class = student_serializer
-    authentication_classes = [BasicAuthentication]
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
     
     def get(self,request,*args,**kwargs):
@@ -22,7 +22,7 @@ class student_list_create(GenericAPIView,ListModelMixin,CreateModelMixin):
 class student_retrieve_update_delete(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin):
     queryset = student_data.objects.all()
     serializer_class = student_serializer
-    authentication_classes = [BasicAuthentication]
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
     
     def get(self,request,*args,**kwargs):

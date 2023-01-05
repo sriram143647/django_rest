@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'app4_api',
     'app5_api',
     'app6_api',
+    'jwt_api',
 ]
 
 MIDDLEWARE = [
@@ -134,5 +135,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # global authentication and permissions
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
+#     # 'DEFAULT_AUTHENTICATION_CLASSES':['rest_framework_simplejwt.authentication.JWTAuthentication'], #jwt configuration 
 #     'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated']
 # }
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+   'ACCESS_TOKEN_LIFETIME':timedelta(minutes=10),
+   'ROTATE_REFRESH_TOKENS':False
+}

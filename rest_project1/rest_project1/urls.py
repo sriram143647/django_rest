@@ -25,7 +25,9 @@ from app3_api import views as app3_views
 from app4_api import views as app4_views
 from app5_api import views as app5_views
 from app6_api import views as app6_views
+from jwt_api import views as jwt_views
 from app4_api.auth_token import modified_token
+from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView,TokenVerifyView
 
 #router object
 my_router = DefaultRouter()
@@ -74,9 +76,16 @@ urlpatterns = [
         
     #api5 urls
     path('',include(my_router.urls)),
-    # path('auth/',include('rest_framework.urls',namespace='auth'))
+    # path('auth/',include('rest_framework.urls',namespace='auth')),
     
     #api6 urls
     # path('',include(my_router.urls)),
-    # path('auth/',include('rest_framework.urls',namespace='auth'))
+    # path('auth/',include('rest_framework.urls',namespace='auth')),
+    
+    #jwt app urls
+    path('get-jwttoken/',TokenObtainPairView.as_view(),name='token-pair'),
+    path('refresh-jwttoken/',TokenRefreshView.as_view(),name='token-refresh'),
+    path('jwttoken-verify/',TokenVerifyView.as_view(),name='token-verify'),
+    path('jwt-data/',jwt_views.student_list_create.as_view(),name='get-data'),
+    path('jwt-data/<int:pk>',jwt_views.student_retrieve_update_delete.as_view())
 ]
