@@ -48,8 +48,8 @@ add_libraries = [
 ]
 
 custom_apps = [
-    'app1_api',
     'crud_api',
+    'app1_api',
     'app2_api',
     'app3_api',
     'app4_api',
