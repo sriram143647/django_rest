@@ -55,6 +55,7 @@ custom_apps = [
     'app4_api',
     'app5_api',
     'app6_api',
+    'app7_api',
     'jwt_api',
 ]
 
@@ -167,3 +168,8 @@ REST_FRAMEWORK = {
 # REST_FRAMEWORK = {
 #     'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
 # }
+
+# enable / disable browsable api
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES':('rest_framework.renderers.JSONRenderer',)
+}
